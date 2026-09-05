@@ -1,0 +1,33 @@
+name: AppReaper
+options:
+  bundleIdPrefix: com.amitkatzav
+  deploymentTarget:
+    macOS: "13.0"
+  createIntermediateGroups: true
+
+targets:
+  AppReaper:
+    type: application
+    platform: macOS
+    deploymentTarget: "13.0"
+    sources:
+      - path: AppReaper
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.amitkatzav.AppReaper
+        PRODUCT_NAME: AppReaper
+        MARKETING_VERSION: "1.0"
+        CURRENT_PROJECT_VERSION: "1"
+        SWIFT_VERSION: "5.0"
+        ENABLE_HARDENED_RUNTIME: YES
+        CODE_SIGN_STYLE: Automatic
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        MACOSX_DEPLOYMENT_TARGET: "13.0"
+    info:
+      path: AppReaper/Info.plist
+      properties:
+        CFBundleDisplayName: AppReaper
+        LSMinimumSystemVersion: "13.0"
+        LSApplicationCategoryType: public.app-category.utilities
+        NSHumanReadableCopyright: "Copyright © 2026 Amit Katzav. All rights reserved."
+        NSPrincipalClass: NSApplication

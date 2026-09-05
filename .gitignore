@@ -1,0 +1,25 @@
+# Xcode / Swift
+.DS_Store
+build/
+DerivedData/
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata/
+*.xcscmblueprint
+*.xccheckout
+*.moved-aside
+*.xcuserstate
+.build/
+Packages/
+Package.pins
+Package.resolved
+.swiftpm/
+
+# Local tooling / worktree metadata (not part of the AppReaper project)
+.claude/
