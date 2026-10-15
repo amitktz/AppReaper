@@ -37,11 +37,26 @@ enum LeftoverCategory: String, CaseIterable {
     }
 }
 
+/// How sure a match is that a path actually belongs to this app.
+enum MatchConfidence: String {
+    /// Bundle-ID filename match (exact, or a well-known dotted suffix like "id.helper.plist").
+    case exact
+    /// Team-ID / Group Container match — shared with every other app on the same team ID,
+    /// so it's flagged for review even though it's selected by default.
+    case probable
+    /// App-name-only match, no bundle ID involved. Never selected by default.
+    case possible
+
+    /// Per the project's selection rules: only `.possible` starts out unchecked.
+    var isSelectedByDefault: Bool { self != .possible }
+}
+
 struct LeftoverItem: Identifiable, Hashable {
     var id: URL { url }
     let url: URL
     let category: LeftoverCategory
     let reason: String
+    let confidence: MatchConfidence
     let size: Int64
 }
 
@@ -66,10 +81,10 @@ struct LeftoverFinder {
             for d in searchDirs {
                 guard let names = try? fileManager.contentsOfDirectory(atPath: d.path) else { continue }
                 for n in names {
-                    guard let reason = Self.match(entry: n, app: app, category: category, siblings: siblings) else { continue }
+                    guard let (reason, confidence) = Self.match(entry: n, app: app, category: category, siblings: siblings) else { continue }
                     let url = d.appendingPathComponent(n)
                     guard Self.isSafeTarget(url, libraryURL: libraryURL) else { continue }
-                    items.append(LeftoverItem(url: url, category: category, reason: reason, size: Self.size(of: url, fm: fileManager)))
+                    items.append(LeftoverItem(url: url, category: category, reason: reason, confidence: confidence, size: Self.size(of: url, fm: fileManager)))
                 }
             }
         }
@@ -80,8 +95,8 @@ struct LeftoverFinder {
         id.split(separator: ".").count >= 3 && !id.hasPrefix("com.apple.")
     }
 
-    /// Returns the reason an entry matches, or nil.
-    static func match(entry: String, app: InstalledApp, category: LeftoverCategory, siblings: Set<String> = []) -> String? {
+    /// Returns the match reason and confidence tier, or nil.
+    static func match(entry: String, app: InstalledApp, category: LeftoverCategory, siblings: Set<String> = []) -> (reason: String, confidence: MatchConfidence)? {
         let id = app.id
         let lowerEntry = entry.lowercased()
         let lowerID = id.lowercased()
@@ -90,11 +105,12 @@ struct LeftoverFinder {
 
         // Exact bundle ID, optionally with an extension (.plist, .savedState, .binarycookies, ...)
         let stem = (entry as NSString).deletingPathExtension.lowercased()
-        if lowerEntry == lowerID || stem == lowerID { return "Bundle ID" }
+        if lowerEntry == lowerID || stem == lowerID { return ("Bundle ID", .exact) }
 
-        // Group containers: "<TEAMID>.<bundleID>" or "group.<bundleID>"
+        // Group containers: "<TEAMID>.<bundleID>" or "group.<bundleID>" — shared with every other
+        // app on the same team ID, so this is "probable" rather than "exact".
         if category == .groupContainers {
-            if lowerEntry.hasSuffix("." + lowerID) || lowerEntry == "group." + lowerID { return "Group container for bundle ID" }
+            if lowerEntry.hasSuffix("." + lowerID) || lowerEntry == "group." + lowerID { return ("Group container for bundle ID", .probable) }
             return nil
         }
 
@@ -102,14 +118,14 @@ struct LeftoverFinder {
         if lowerEntry.hasPrefix(lowerID + ".") {
             if siblings.contains(where: { lowerEntry.hasPrefix($0.lowercased() + ".") || stem == $0.lowercased() }) { return nil }
             // Preferences/launch items: only the well-known forms, not arbitrary children.
-            return "Bundle ID prefix"
+            return ("Bundle ID prefix", .exact)
         }
 
         if category.allowsNameMatch {
             let name = app.name.lowercased()
             let fileName = app.bundleURL.deletingPathExtension().lastPathComponent.lowercased()
             for candidate in [name, fileName] where candidate.count >= 4 && !genericNames.contains(candidate) {
-                if lowerEntry == candidate { return "App name" }
+                if lowerEntry == candidate { return ("App name", .possible) }
             }
             // Company-style folders in Application Support named after the team/bundle vendor are NOT matched.
         }

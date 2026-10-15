@@ -16,7 +16,7 @@ final class UninstallerTests: XCTestCase {
         InstalledApp(id: id, name: "Widget", version: "1", bundleURL: URL(fileURLWithPath: path), teamIdentifier: nil, source: .applications)
     }
     func item(_ rel: String) -> LeftoverItem {
-        LeftoverItem(url: lib.appendingPathComponent(rel), category: .caches, reason: "t", size: 1)
+        LeftoverItem(url: lib.appendingPathComponent(rel), category: .caches, reason: "t", confidence: .exact, size: 1)
     }
 
     func testTrashesLeftoversThenApp() throws {
@@ -46,7 +46,7 @@ final class UninstallerTests: XCTestCase {
     func testUnsafeLeftoverSkipped() throws {
         let t = FakeTrasher()
         let u = Uninstaller(trasher: t, libraryURL: lib)
-        let bad = LeftoverItem(url: URL(fileURLWithPath: "/Users/other/Documents"), category: .other, reason: "x", size: 1)
+        let bad = LeftoverItem(url: URL(fileURLWithPath: "/Users/other/Documents"), category: .other, reason: "x", confidence: .exact, size: 1)
         let r = u.execute(UninstallPlan(app: app(), leftovers: [bad], appSize: 0))
         XCTAssertEqual(r.failures.count, 1)
         XCTAssertFalse(t.trashed.contains(bad.url))

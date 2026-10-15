@@ -75,6 +75,13 @@ struct AppDetailView: View {
                             set: { on in if on { model.selectedLeftovers.insert(item.url) } else { model.selectedLeftovers.remove(item.url) } }
                         )) {
                             HStack {
+                                if item.confidence != .exact {
+                                    Image(systemName: "exclamationmark.triangle.fill")
+                                        .foregroundStyle(.orange)
+                                        .help(item.confidence == .possible
+                                              ? "Matched by app name only, not a bundle ID — review before deleting."
+                                              : "Shared Group Container — other apps on the same team ID may use this too.")
+                                }
                                 VStack(alignment: .leading) {
                                     Text(item.url.lastPathComponent)
                                     Text("\(item.category.rawValue) · \(item.reason)").font(.caption).foregroundStyle(.secondary)

@@ -36,17 +36,20 @@ re-enable a restriction later.
    again at execution time, removes leftovers before the app bundle, and
    reports per-item success/failure.
 
+Each leftover carries a `MatchConfidence`:
+
+| Tier | Meaning | Selected by default? |
+|---|---|---|
+| `.exact` | Bundle-ID filename match | Yes |
+| `.probable` | Group Container shared by team ID | Yes, flagged with a caution icon (other apps on the same team may use it too) |
+| `.possible` | App-name-only match, no bundle ID involved | **No** — review before including it |
+
 ## What's not here yet
 
 This is an early, actively-developed build. Known gaps against the full
 design:
 
 - No permission-gate onboarding for Full Disk Access.
-- Leftover items are currently **all selected by default** when found —
-  the eventual goal is to default lower-confidence matches (name-only,
-  shared Group Containers) to *unchecked* so you review them before
-  anything is trashed. Double-check the leftover list before confirming
-  a removal until this lands.
 - No vendor-uninstaller warnings (Adobe/Microsoft/Docker/etc.) yet.
 - No admin-scoped removal of `/Library/LaunchDaemons` or
   `/Library/PrivilegedHelperTools` (would need a privileged helper —

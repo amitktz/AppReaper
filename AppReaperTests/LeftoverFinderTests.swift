@@ -94,4 +94,21 @@ final class LeftoverFinderTests: XCTestCase {
         XCTAssertFalse(LeftoverFinder.isUsableBundleID("com.foo"))
         XCTAssertTrue(LeftoverFinder.isUsableBundleID("com.foo.bar"))
     }
+
+    func testConfidenceTiers() throws {
+        try make("Preferences/com.foo.Widget.plist")
+        try make("Group Containers/ABCDE12345.com.foo.Widget", dir: true)
+        try make("Application Support/Widget", dir: true, bytes: 1)
+        let items = LeftoverFinder(libraryURL: lib).find(for: app())
+        let byName = Dictionary(uniqueKeysWithValues: items.map { ($0.url.lastPathComponent, $0) })
+        XCTAssertEqual(byName["com.foo.Widget.plist"]?.confidence, .exact)
+        XCTAssertEqual(byName["ABCDE12345.com.foo.Widget"]?.confidence, .probable)
+        XCTAssertEqual(byName["Widget"]?.confidence, .possible)
+    }
+
+    func testOnlyExactAndProbableSelectedByDefault() {
+        XCTAssertTrue(MatchConfidence.exact.isSelectedByDefault)
+        XCTAssertTrue(MatchConfidence.probable.isSelectedByDefault)
+        XCTAssertFalse(MatchConfidence.possible.isSelectedByDefault)
+    }
 }

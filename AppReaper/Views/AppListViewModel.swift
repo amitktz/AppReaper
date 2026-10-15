@@ -33,7 +33,9 @@ final class AppListViewModel: ObservableObject {
         let items = await Task.detached { LeftoverFinder().find(for: app, otherBundleIDs: others) }.value
         guard selection == app.id else { return }
         leftovers = items
-        selectedLeftovers = Set(items.map(\.url))
+        // Only pre-check items whose confidence tier calls for it — name-only
+        // matches start unchecked so the user reviews them before anything is trashed.
+        selectedLeftovers = Set(items.filter(\.confidence.isSelectedByDefault).map(\.url))
         isScanning = false
     }
 
