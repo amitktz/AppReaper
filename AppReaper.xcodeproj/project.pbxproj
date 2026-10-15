@@ -7,32 +7,89 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0486B7917B7850ED4827CB6C /* AppDiscoveryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CE7615180C8EFEF72C2A90 /* AppDiscoveryService.swift */; };
 		0F6276D175EE4D53EACB993A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAE8B89AE3514EABD6F87EDF /* Assets.xcassets */; };
+		196854AC802F84F5730859AA /* AppDiscoveryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35774E6B121770B3DF0D93E2 /* AppDiscoveryTests.swift */; };
+		288EECA6EEDACC2CBA1311B8 /* UninstallerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D958441EF7C0B2105AD610 /* UninstallerTests.swift */; };
 		6708FAEF6DB954556AF5B527 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F3A06FC2573C0933F976D9 /* ContentView.swift */; };
+		AC5AC859F17D60AEE188328C /* LeftoverFinderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7BE4DE326DBEF381E14354 /* LeftoverFinderTests.swift */; };
+		BF24DE76D010C7F00562B2C2 /* Uninstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42137A0E010213B9D2135D93 /* Uninstaller.swift */; };
 		CE4C80A6B988E40C49A8C2FA /* AppReaperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824938DD4E74987514C17EAD /* AppReaperApp.swift */; };
+		D804ACC94F1EC5A8AE7F7EED /* AppListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438BDA25A9D142B52C78E00D /* AppListViewModel.swift */; };
+		E5486383094BE6F5645BBE7B /* LeftoverFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32039E9A1506CCD40C6293A8 /* LeftoverFinder.swift */; };
+		F1C1A179F25C74F9A9AD210C /* InstalledApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5D9D96AD1640A7DA0D495A /* InstalledApp.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		1970E139C36F3315D8FE0650 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 398B41FBBB84C8B71E2BD0E0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6ECF1C82FD2568A302140C53;
+			remoteInfo = AppReaper;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		0D71B71E2FDA71B8E055826C /* AppReaperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppReaperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		14CE7615180C8EFEF72C2A90 /* AppDiscoveryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDiscoveryService.swift; sourceTree = "<group>"; };
+		2A7BE4DE326DBEF381E14354 /* LeftoverFinderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftoverFinderTests.swift; sourceTree = "<group>"; };
+		32039E9A1506CCD40C6293A8 /* LeftoverFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftoverFinder.swift; sourceTree = "<group>"; };
+		35774E6B121770B3DF0D93E2 /* AppDiscoveryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDiscoveryTests.swift; sourceTree = "<group>"; };
 		3E8B9D6A785C11B43E0F2751 /* AppReaper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppReaper.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		42137A0E010213B9D2135D93 /* Uninstaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Uninstaller.swift; sourceTree = "<group>"; };
+		438BDA25A9D142B52C78E00D /* AppListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppListViewModel.swift; sourceTree = "<group>"; };
 		824938DD4E74987514C17EAD /* AppReaperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppReaperApp.swift; sourceTree = "<group>"; };
+		8A5D9D96AD1640A7DA0D495A /* InstalledApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstalledApp.swift; sourceTree = "<group>"; };
 		AAE8B89AE3514EABD6F87EDF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AB56BA80A37E90B4FB17D5FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		B9F3A06FC2573C0933F976D9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C7D958441EF7C0B2105AD610 /* UninstallerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UninstallerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
+		4DC41F8B734CEABEDBA6795A /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				14CE7615180C8EFEF72C2A90 /* AppDiscoveryService.swift */,
+				32039E9A1506CCD40C6293A8 /* LeftoverFinder.swift */,
+				42137A0E010213B9D2135D93 /* Uninstaller.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		5448333597B204EB86DABD89 /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				3E8B9D6A785C11B43E0F2751 /* AppReaper.app */,
+				0D71B71E2FDA71B8E055826C /* AppReaperTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		7153476487DAA2269880F770 /* AppReaperTests */ = {
+			isa = PBXGroup;
+			children = (
+				35774E6B121770B3DF0D93E2 /* AppDiscoveryTests.swift */,
+				2A7BE4DE326DBEF381E14354 /* LeftoverFinderTests.swift */,
+				C7D958441EF7C0B2105AD610 /* UninstallerTests.swift */,
+			);
+			path = AppReaperTests;
+			sourceTree = "<group>";
+		};
+		83E5CC0CB826904705C222DB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8A5D9D96AD1640A7DA0D495A /* InstalledApp.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		8592B8F83174A80D61067C67 = {
 			isa = PBXGroup;
 			children = (
 				9FE8D68701C1197D1E2788D4 /* AppReaper */,
+				7153476487DAA2269880F770 /* AppReaperTests */,
 				5448333597B204EB86DABD89 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -43,6 +100,8 @@
 				824938DD4E74987514C17EAD /* AppReaperApp.swift */,
 				AAE8B89AE3514EABD6F87EDF /* Assets.xcassets */,
 				AB56BA80A37E90B4FB17D5FB /* Info.plist */,
+				83E5CC0CB826904705C222DB /* Models */,
+				4DC41F8B734CEABEDBA6795A /* Services */,
 				E0FBB4AD8278B616555DA4EE /* Views */,
 			);
 			path = AppReaper;
@@ -51,6 +110,7 @@
 		E0FBB4AD8278B616555DA4EE /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				438BDA25A9D142B52C78E00D /* AppListViewModel.swift */,
 				B9F3A06FC2573C0933F976D9 /* ContentView.swift */,
 			);
 			path = Views;
@@ -76,6 +136,24 @@
 			productName = AppReaper;
 			productReference = 3E8B9D6A785C11B43E0F2751 /* AppReaper.app */;
 			productType = "com.apple.product-type.application";
+		};
+		892D2BE906702EB57F0FFA0A /* AppReaperTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 357C8FE64CC44D19FE0386F8 /* Build configuration list for PBXNativeTarget "AppReaperTests" */;
+			buildPhases = (
+				324DAC2FA42A7737BAB77D67 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3713D5F11D18910F98663B9C /* PBXTargetDependency */,
+			);
+			name = AppReaperTests;
+			packageProductDependencies = (
+			);
+			productName = AppReaperTests;
+			productReference = 0D71B71E2FDA71B8E055826C /* AppReaperTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -106,6 +184,7 @@
 			projectRoot = "";
 			targets = (
 				6ECF1C82FD2568A302140C53 /* AppReaper */,
+				892D2BE906702EB57F0FFA0A /* AppReaperTests */,
 			);
 		};
 /* End PBXProject section */
@@ -122,18 +201,79 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		324DAC2FA42A7737BAB77D67 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				196854AC802F84F5730859AA /* AppDiscoveryTests.swift in Sources */,
+				AC5AC859F17D60AEE188328C /* LeftoverFinderTests.swift in Sources */,
+				288EECA6EEDACC2CBA1311B8 /* UninstallerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		80B2C8FF40A8FA94D951AE54 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0486B7917B7850ED4827CB6C /* AppDiscoveryService.swift in Sources */,
+				D804ACC94F1EC5A8AE7F7EED /* AppListViewModel.swift in Sources */,
 				CE4C80A6B988E40C49A8C2FA /* AppReaperApp.swift in Sources */,
 				6708FAEF6DB954556AF5B527 /* ContentView.swift in Sources */,
+				F1C1A179F25C74F9A9AD210C /* InstalledApp.swift in Sources */,
+				E5486383094BE6F5645BBE7B /* LeftoverFinder.swift in Sources */,
+				BF24DE76D010C7F00562B2C2 /* Uninstaller.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		3713D5F11D18910F98663B9C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6ECF1C82FD2568A302140C53 /* AppReaper */;
+			targetProxy = 1970E139C36F3315D8FE0650 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		4016A554E7F8EA6A6575A1B1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.amitkatzav.AppReaperTests;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AppReaper.app/Contents/MacOS/AppReaper";
+			};
+			name = Debug;
+		};
+		42664DC002A05BBC78F5D2F5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.amitkatzav.AppReaperTests;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AppReaper.app/Contents/MacOS/AppReaper";
+			};
+			name = Release;
+		};
 		4736B7E426A4DECC0FC188D6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -305,6 +445,15 @@
 			buildConfigurations = (
 				4736B7E426A4DECC0FC188D6 /* Debug */,
 				B65BDA79AD8DD18E4F514793 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		357C8FE64CC44D19FE0386F8 /* Build configuration list for PBXNativeTarget "AppReaperTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4016A554E7F8EA6A6575A1B1 /* Debug */,
+				42664DC002A05BBC78F5D2F5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

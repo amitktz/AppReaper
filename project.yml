@@ -31,3 +31,18 @@ targets:
         LSApplicationCategoryType: public.app-category.utilities
         NSHumanReadableCopyright: "Copyright © 2026 Amit Katzav. All rights reserved."
         NSPrincipalClass: NSApplication
+  AppReaperTests:
+    type: bundle.unit-test
+    platform: macOS
+    deploymentTarget: "13.0"
+    sources:
+      - path: AppReaperTests
+    dependencies:
+      - target: AppReaper
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        SWIFT_VERSION: "5.0"
+        PRODUCT_BUNDLE_IDENTIFIER: com.amitkatzav.AppReaperTests
+        TEST_HOST: "$(BUILT_PRODUCTS_DIR)/AppReaper.app/Contents/MacOS/AppReaper"
+        BUNDLE_LOADER: "$(TEST_HOST)"
